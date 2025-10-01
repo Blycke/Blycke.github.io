@@ -1,6 +1,6 @@
 # Blycke 🌌
 
-Bienvenue sur le dépôt officiel de **Blycke** !  
+Bienvenue sur le dépôt officiel de **Blycke** le goat!  
 Découvrez mon univers sur : [blycke.github.io](https://blycke.github.io)
 
 ---
