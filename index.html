@@ -3,20 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | BTS SIO SLAM - Développeur</title>
-  <meta name="description" content="Portfolio d'un étudiant en BTS SIO SLAM spécialisé en développement web et applications." />
-  <link rel="icon" href="assets/favicon.ico" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Esteban Chaussinand | BTS SIO SLAM - Développeur Web</title>
+  <meta name="description" content="Portfolio d'Esteban Chaussinand, étudiant en BTS SIO SLAM spécialisé en développement web." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    .nav-link { color: #333; font-weight: 500; transition: color 0.3s; }
+    .nav-link:hover { color: #667eea; }
+    .mobile-link { display: block; padding: 1rem; border-bottom: 1px solid #e5e7eb; }
+    .btn-primary { background: #667eea; color: white; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; display: inline-block; }
+    .btn-primary:hover { background: #5568d3; transform: translateY(-2px); }
+    .btn-outline { border: 2px solid white; color: white; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; display: inline-block; }
+    .btn-outline:hover { background: white; color: #667eea; }
+    .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937; }
+    .card { background: white; padding: 2rem; border-radius: 1rem; shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .project-card { background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .project-img { width: 100%; height: 200px; object-fit: cover; }
+    .form-input { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; }
+    .form-input:focus { outline: none; border-color: #667eea; }
+  </style>
 </head>
-<body class="font-inter bg-light text-dark min-h-screen">
+<body class="bg-gray-50 text-gray-900 min-h-screen">
 
   <!-- Navigation -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold text-primary">MonPortfolio</div>
+      <div class="text-xl font-bold text-purple-600">Esteban Chaussinand</div>
       <div class="hidden md:flex space-x-8">
         <a href="#accueil" class="nav-link">Accueil</a>
         <a href="#apropos" class="nav-link">À Propos</a>
@@ -24,7 +41,7 @@
         <a href="#projets" class="nav-link">Projets</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
-      <button id="menuBtn" class="md:hidden text-dark">
+      <button id="menuBtn" class="md:hidden text-gray-900">
         <i class="fas fa-bars text-xl"></i>
       </button>
     </nav>
@@ -40,8 +57,10 @@
 
   <!-- Hero -->
   <section id="accueil" class="gradient-bg text-white py-20 text-center">
-    <h1 class="text-5xl font-bold mb-4">Étudiant BTS SIO SLAM</h1>
-    <p class="text-xl opacity-90 mb-6">Passionné par le développement web et les nouvelles technologies</p>
+    <h1 class="text-5xl font-bold mb-4">Esteban Chaussinand</h1>
+    <p class="text-xl opacity-90 mb-2">Étudiant en 2ème année BTS SIO SLAM</p>
+    <p class="text-lg opacity-80 mb-6">Lycée Simone Weil - Saint-Priest-en-Jarez</p>
+    <p class="text-xl opacity-90 mb-8">Fasciné par la conception d'interfaces web et l'art de structurer des sites performants</p>
     <div class="space-x-4">
       <a href="#projets" class="btn-primary">Voir mes projets</a>
       <a href="#contact" class="btn-outline">Me contacter</a>
@@ -49,17 +68,22 @@
   </section>
 
   <!-- À propos -->
-  <section id="apropos" class="py-20 bg-white container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    <img src="assets/img/photo.jpg" alt="Photo de profil" class="rounded-lg shadow-lg w-full" />
-    <div>
-      <h2 class="section-title">À Propos de Moi</h2>
-      <p class="mb-4">Étudiant en BTS SIO option SLAM, je conçois des applications web et des solutions logicielles sur mesure.</p>
-      <p class="mb-6">Mon objectif : devenir développeur full-stack et contribuer à des projets innovants.</p>
-      <ul class="space-y-2">
-        <li><i class="fas fa-graduation-cap text-primary mr-2"></i>BTS SIO SLAM</li>
-        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>France</li>
-        <li><i class="fas fa-code text-primary mr-2"></i>Développeur Web</li>
-      </ul>
+  <section id="apropos" class="py-20 bg-white">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg w-full h-96 flex items-center justify-center text-white text-6xl">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div>
+        <h2 class="section-title">À Propos de Moi</h2>
+        <p class="mb-4 text-lg">Actuellement en 2ème année de BTS SIO option SLAM au Lycée Simone Weil à Saint-Priest-en-Jarez, je me spécialise dans le développement web et la création d'applications.</p>
+        <p class="mb-6 text-lg">Passionné par la structure et l'architecture des sites web, j'aime concevoir des solutions élégantes et performantes qui offrent une expérience utilisateur optimale.</p>
+        <ul class="space-y-3">
+          <li class="flex items-center"><i class="fas fa-graduation-cap text-purple-600 mr-3 text-xl"></i><span class="text-lg">BTS SIO SLAM - 2ème année</span></li>
+          <li class="flex items-center"><i class="fas fa-school text-purple-600 mr-3 text-xl"></i><span class="text-lg">Lycée Simone Weil, Saint-Priest-en-Jarez</span></li>
+          <li class="flex items-center"><i class="fas fa-map-marker-alt text-purple-600 mr-3 text-xl"></i><span class="text-lg">La Fouillouse, Loire, France</span></li>
+          <li class="flex items-center"><i class="fas fa-code text-purple-600 mr-3 text-xl"></i><span class="text-lg">Développeur Web</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -69,19 +93,19 @@
       <h2 class="section-title">Mes Compétences</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
         <div class="card">
-          <i class="fas fa-code text-primary text-3xl mb-4"></i>
+          <i class="fas fa-code text-purple-600 text-4xl mb-4"></i>
           <h3 class="text-xl font-semibold mb-3">Développement Web</h3>
-          <p>HTML5, CSS3, JavaScript, React, Node.js...</p>
+          <p class="text-gray-600">HTML5, CSS3, JavaScript, React, Vue.js</p>
         </div>
         <div class="card">
-          <i class="fas fa-server text-primary text-3xl mb-4"></i>
+          <i class="fas fa-server text-purple-600 text-4xl mb-4"></i>
           <h3 class="text-xl font-semibold mb-3">Backend & BDD</h3>
-          <p>PHP, Symfony, MySQL, MongoDB, API REST...</p>
+          <p class="text-gray-600">PHP, Symfony, MySQL, MongoDB, API REST</p>
         </div>
         <div class="card">
-          <i class="fas fa-tools text-primary text-3xl mb-4"></i>
+          <i class="fas fa-tools text-purple-600 text-4xl mb-4"></i>
           <h3 class="text-xl font-semibold mb-3">Outils & Méthodes</h3>
-          <p>Git, Docker, Méthodes Agiles, CI/CD...</p>
+          <p class="text-gray-600">Git, Docker, Méthodes Agiles, CI/CD</p>
         </div>
       </div>
     </div>
@@ -92,14 +116,48 @@
     <div class="container mx-auto px-4 text-center">
       <h2 class="section-title">Mes Projets</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-        <!-- Projet exemple -->
+        <!-- Projet 1 -->
         <div class="project-card">
-          <img src="assets/img/projet1.jpg" alt="Projet 1" class="project-img" />
-          <h3 class="text-xl font-bold mt-4">Application de Gestion</h3>
-          <p class="text-gray-600 mt-2">Développée en React et Node.js</p>
-          <div class="mt-4 flex justify-center space-x-4">
-            <a href="#" class="text-primary hover:text-secondary"><i class="fab fa-github"></i> Code</a>
-            <a href="#" class="text-primary hover:text-secondary"><i class="fas fa-external-link-alt"></i> Demo</a>
+          <div class="bg-gradient-to-br from-blue-400 to-blue-600 h-48 flex items-center justify-center text-white text-5xl">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mt-2">Application de Gestion</h3>
+            <p class="text-gray-600 mt-2">Développée en React et Node.js</p>
+            <div class="mt-4 flex justify-center space-x-4">
+              <a href="#" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fab fa-github"></i> Code</a>
+              <a href="#" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fas fa-external-link-alt"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Projet 2 -->
+        <div class="project-card">
+          <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 flex items-center justify-center text-white text-5xl">
+            <i class="fas fa-database"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mt-2">Système de Base de Données</h3>
+            <p class="text-gray-600 mt-2">MySQL et PHP avec interface admin</p>
+            <div class="mt-4 flex justify-center space-x-4">
+              <a href="#" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fab fa-github"></i> Code</a>
+              <a href="#" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fas fa-external-link-alt"></i> Demo</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Projet 3 -->
+        <div class="project-card">
+          <div class="bg-gradient-to-br from-purple-400 to-purple-600 h-48 flex items-center justify-center text-white text-5xl">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mt-2">Site Web Responsive</h3>
+            <p class="text-gray-600 mt-2">Design moderne avec HTML, CSS et JavaScript</p>
+            <div class="mt-4 flex justify-center space-x-4">
+              <a href="#" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fab fa-github"></i> Code</a>
+              <a href="#" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fas fa-external-link-alt"></i> Demo</a>
+            </div>
           </div>
         </div>
       </div>
@@ -107,21 +165,69 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-20 bg-gray-50 text-center">
-    <h2 class="section-title">Contactez-moi</h2>
-    <form class="max-w-2xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg" id="contactForm">
-      <input type="text" placeholder="Votre nom" class="form-input" required />
-      <input type="email" placeholder="Votre email" class="form-input" required />
-      <textarea placeholder="Votre message" class="form-input h-32" required></textarea>
-      <button type="submit" class="btn-primary w-full mt-4">Envoyer</button>
-    </form>
+  <section id="contact" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="section-title">Contactez-moi</h2>
+      <p class="text-lg text-gray-600 mb-10">N'hésitez pas à me contacter pour toute question ou opportunité</p>
+      
+      <div class="max-w-2xl mx-auto mb-10">
+        <div class="flex justify-center space-x-8 text-2xl">
+          <a href="mailto:avallocenzo@gmail.com" class="text-purple-600 hover:text-purple-800 transition"><i class="fas fa-envelope"></i></a>
+          <a href="#" class="text-purple-600 hover:text-purple-800 transition"><i class="fab fa-github"></i></a>
+          <a href="#" class="text-purple-600 hover:text-purple-800 transition"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      
+      <form class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg" id="contactForm">
+        <input type="text" placeholder="Votre nom" class="form-input" required />
+        <input type="email" placeholder="Votre email" class="form-input" required />
+        <textarea placeholder="Votre message" class="form-input h-32" required></textarea>
+        <button type="submit" class="btn-primary w-full mt-4">Envoyer</button>
+      </form>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white py-6 text-center">
-    <p>&copy; 2025 MonPortfolio - Tous droits réservés</p>
+  <footer class="bg-gray-900 text-white py-6 text-center">
+    <p>&copy; 2025 Esteban Chaussinand - Tous droits réservés</p>
+    <p class="text-sm text-gray-400 mt-2">avallocenzo@gmail.com</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Menu mobile
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Fermer le menu mobile lors du clic sur un lien
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    
+    // Formulaire de contact
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Message envoyé ! Je vous répondrai rapidement.');
+      contactForm.reset();
+    });
+  </script>
 </body>
 </html>
