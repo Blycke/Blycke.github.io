@@ -323,10 +323,12 @@
           <p>Disponible pour une alternance, un stage ou tout projet web. N'hésite pas à me contacter pour discuter de ta prochaine idée.</p>
           <a class="contact-email" href="mailto:avallocenzo@gmail.com">avallocenzo@gmail.com ↗</a>
         </div>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
-          <input type="text" placeholder="Votre nom" required />
-          <input type="email" placeholder="Votre email" required />
-          <textarea rows="5" placeholder="Votre message…" required></textarea>
+        <form class="contact-form" id="form">
+          <input type="hidden" name="access_key" value="330f657c-ce57-4cc9-933e-8b9365b22998" />
+          <input type="hidden" name="_to" value="estebanchaussinand@gmail.com" />
+          <input type="text" name="name" placeholder="Votre nom" required />
+          <input type="email" name="email" placeholder="Votre email" required />
+          <textarea name="message" rows="5" placeholder="Votre message…" required></textarea>
           <button type="submit">Envoyer le message</button>
         </form>
       </div>
@@ -347,12 +349,36 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-    function handleSubmit(e) {
+    const form = document.getElementById('form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.textContent = '✓ Envoyé !';
-      setTimeout(() => btn.textContent = 'Envoyer le message', 3000);
-    }
+      const formData = new FormData(form);
+      formData.append("access_key", "330f657c-ce57-4cc9-933e-8b9365b22998");
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = "Envoi en cours...";
+      submitBtn.disabled = true;
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+        const data = await response.json();
+        if (response.ok) {
+          submitBtn.textContent = "✓ Message envoyé !";
+          form.reset();
+          setTimeout(() => { submitBtn.textContent = originalText; submitBtn.disabled = false; }, 3000);
+        } else {
+          alert("Erreur : " + data.message);
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      } catch (error) {
+        alert("Une erreur est survenue. Réessaie.");
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
