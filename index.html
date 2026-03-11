@@ -324,8 +324,6 @@
           <a class="contact-email" href="mailto:avallocenzo@gmail.com">avallocenzo@gmail.com ↗</a>
         </div>
         <form class="contact-form" id="form">
-          <input type="hidden" name="access_key" value="330f657c-ce57-4cc9-933e-8b9365b22998" />
-          <input type="hidden" name="_to" value="estebanchaussinand@gmail.com" />
           <input type="text" name="name" placeholder="Votre nom" required />
           <input type="email" name="email" placeholder="Votre email" required />
           <textarea name="message" rows="5" placeholder="Votre message…" required></textarea>
@@ -353,8 +351,9 @@
     const submitBtn = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const ACCESS_KEY = "330f657c-ce57-4cc9-933e-8b9365b22998";
       const formData = new FormData(form);
-      formData.append("access_key", "330f657c-ce57-4cc9-933e-8b9365b22998");
+      formData.set("access_key", ACCESS_KEY);
       const originalText = submitBtn.textContent;
       submitBtn.textContent = "Envoi en cours...";
       submitBtn.disabled = true;
