@@ -1,266 +1,490 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Esteban Chaussinand | BTS SIO SLAM - Développeur Web</title>
-  <meta name="description" content="Portfolio d'Esteban Chaussinand, étudiant en BTS SIO SLAM spécialisé en développement web." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Esteban Chaussinand | Développeur Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-    .nav-link { color: #333; font-weight: 500; transition: color 0.3s; }
-    .nav-link:hover { color: #667eea; }
-    .mobile-link { display: block; padding: 1rem; border-bottom: 1px solid #e5e7eb; }
-    .btn-primary { background: #667eea; color: white; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; display: inline-block; }
-    .btn-primary:hover { background: #5568d3; transform: translateY(-2px); }
-    .btn-outline { border: 2px solid white; color: white; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; transition: all 0.3s; display: inline-block; }
-    .btn-outline:hover { background: white; color: #667eea; }
-    .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #1f2937; }
-    .card { background: white; padding: 2rem; border-radius: 1rem; shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-    .project-card { background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s; }
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
-    .project-img { width: 100%; height: 200px; object-fit: cover; }
-    .form-input { width: 100%; padding: 1rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; }
-    .form-input:focus { outline: none; border-color: #667eea; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #e8e8e8;   /* gris clair principal */
+      --bg2:        #dedede;   /* gris légèrement plus foncé pour alterner */
+      --bg3:        #d4d4d4;   /* cartes / éléments enfoncés */
+      --yellow:     #a87c00;   /* jaune foncé / doré */
+      --yellow-lt:  #c49400;   /* jaune doré un peu plus clair pour hover */
+      --yellow-bg:  rgba(168,124,0,0.08);
+      --dark:       #1a1a1a;   /* texte principal */
+      --mid:        #555555;   /* texte secondaire */
+      --muted:      #888888;   /* texte tertiaire */
+      --border:     #c8c8c8;
+      --white:      #f2f2f2;
+      --sans: 'Inter', sans-serif;
+      --display: 'Syne', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 5rem;
+      background: rgba(232,232,232,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--display); font-weight: 800; font-size: 1.1rem;
+      color: var(--dark); text-decoration: none; letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--yellow); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+
+    /* ── HERO ── */
+    #accueil {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 0 5rem;
+      position: relative; overflow: hidden;
+      background: var(--bg);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+    .hero-status {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.72rem; letter-spacing: 0.12em; font-weight: 600;
+      color: var(--yellow);
+      border: 1px solid rgba(168,124,0,0.35);
+      padding: 0.4rem 1rem; border-radius: 2px;
+      background: var(--yellow-bg);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+    .hero-status::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--yellow); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.7)} }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 800; line-height: 0.95;
+      letter-spacing: -0.04em; color: var(--dark);
+      margin-bottom: 1.8rem;
+    }
+    h1 .accent { color: var(--yellow); }
+
+    .hero-desc {
+      font-size: 1rem; color: var(--mid); font-weight: 300;
+      max-width: 500px; margin-bottom: 3rem; line-height: 1.85;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-yellow {
+      background: var(--yellow); color: #fff;
+      padding: 0.9rem 2.2rem; text-decoration: none;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em;
+      border-radius: 2px; transition: all 0.2s;
+    }
+    .btn-yellow:hover { background: var(--yellow-lt); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(168,124,0,0.2); }
+    .btn-ghost {
+      border: 1px solid var(--border); color: var(--mid);
+      padding: 0.9rem 2.2rem; text-decoration: none;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
+      border-radius: 2px; transition: all 0.2s; background: var(--white);
+    }
+    .btn-ghost:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .scroll-line {
+      position: absolute; bottom: 2.5rem; left: 5rem;
+      display: flex; align-items: center; gap: 1rem;
+      color: var(--muted); font-size: 0.7rem; letter-spacing: 0.16em;
+    }
+    .scroll-line::before {
+      content: ''; display: block;
+      width: 40px; height: 1px; background: var(--border);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 5rem; }
+
+    .eyebrow {
+      font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--yellow); font-weight: 700; margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1.05;
+      color: var(--dark); margin-bottom: 0.5rem;
+    }
+    .sub {
+      color: var(--mid); font-size: 0.9rem; font-weight: 300;
+      max-width: 460px; margin-bottom: 4rem; line-height: 1.85;
+    }
+
+    /* ── ABOUT ── */
+    #apropos { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 6rem; align-items: start; }
+    .about-text p { color: var(--mid); margin-bottom: 1.1rem; line-height: 1.9; font-size: 0.92rem; }
+
+    .info-stack { display: flex; flex-direction: column; gap: 0.8rem; }
+    .info-row {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1rem 1.3rem;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 4px; transition: border-color 0.2s;
+    }
+    .info-row:hover { border-color: var(--yellow); }
+    .info-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+    .info-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.1rem; }
+    .info-value { font-size: 0.87rem; font-weight: 600; color: var(--dark); }
+
+    /* ── SKILLS ── */
+    #competences { background: var(--bg); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--border); }
+    .skill-card {
+      background: var(--white); padding: 2.2rem;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .skill-card:last-child { border-right: none; }
+    .skill-card:hover { background: var(--bg3); }
+    .skill-num {
+      font-family: var(--display); font-size: 0.7rem; font-weight: 800;
+      color: var(--yellow); letter-spacing: 0.12em; margin-bottom: 0.8rem;
+    }
+    .skill-title { font-family: var(--display); font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 1.2rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-tag {
+      border: 1px solid var(--border); color: var(--mid); background: var(--bg);
+      padding: 0.25rem 0.75rem; border-radius: 2px;
+      font-size: 0.77rem; transition: border-color 0.2s, color 0.2s;
+    }
+    .skill-card:hover .skill-tag { border-color: rgba(168,124,0,0.3); color: var(--dark); }
+
+    /* ── CERTS ── */
+    #certifications { background: var(--white); }
+    .cert-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+    .cert-card {
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 2rem; border-radius: 4px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .cert-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--yellow), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s;
+    }
+    .cert-card:hover { border-color: rgba(168,124,0,0.4); transform: translateY(-4px); }
+    .cert-card:hover::before { transform: scaleX(1); }
+    .cert-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      color: var(--yellow); font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .cert-name { font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .cert-desc { color: var(--mid); font-size: 0.84rem; line-height: 1.75; }
+
+    /* ── PROJECTS ── */
+    #projets { background: var(--bg); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 1.2rem; }
+    .project-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover { border-color: var(--yellow); transform: translateY(-5px); box-shadow: 0 16px 40px rgba(168,124,0,0.1); }
+    .project-thumb {
+      height: 130px; display: flex; align-items: center; justify-content: center;
+    }
+    .thumb-1 { background: #ede8d8; }
+    .thumb-2 { background: #dfe4ed; }
+    .thumb-3 { background: #e4dded; }
+    .thumb-emoji { font-size: 2.5rem; }
+
+    .project-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; }
+    .project-techs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .project-tech {
+      border: 1px solid rgba(168,124,0,0.35); color: var(--yellow);
+      padding: 0.18rem 0.65rem; border-radius: 2px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      background: var(--yellow-bg);
+    }
+    .project-title { font-family: var(--display); font-weight: 700; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .project-desc { color: var(--mid); font-size: 0.84rem; line-height: 1.8; flex: 1; margin-bottom: 1.5rem; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--yellow); text-decoration: none;
+      font-size: 0.79rem; font-weight: 700; letter-spacing: 0.04em;
+      transition: gap 0.2s; align-self: flex-start;
+    }
+    .project-link:hover { gap: 0.9rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--white); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start; }
+    .contact-left p { color: var(--mid); font-size: 0.92rem; line-height: 1.9; margin-bottom: 2rem; }
+    .contact-email {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--dark); text-decoration: none; font-weight: 600;
+      font-size: 0.9rem; border-bottom: 1.5px solid var(--yellow);
+      padding-bottom: 2px; transition: color 0.2s;
+    }
+    .contact-email:hover { color: var(--yellow); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 0.9rem; }
+    .contact-form input, .contact-form textarea {
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--dark); padding: 0.95rem 1.1rem;
+      border-radius: 4px; font-family: var(--sans); font-size: 0.88rem;
+      transition: border-color 0.2s; outline: none; resize: vertical;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--yellow); }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form button {
+      background: var(--yellow); color: #fff; border: none; cursor: pointer;
+      padding: 1rem; border-radius: 2px; font-family: var(--sans);
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .contact-form button:hover { background: var(--yellow-lt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(168,124,0,0.18); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.8rem 5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; background: var(--bg);
+    }
+    footer p { color: var(--muted); font-size: 0.78rem; }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--yellow); }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media(max-width:960px){
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; }
+      #accueil { padding: 8rem 2rem 4rem; }
+      .scroll-line { left: 2rem; }
+      section { padding: 5rem 2rem; }
+      .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .cert-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 1.8rem 2rem; }
+    }
+    @media(max-width:580px){
+      .cert-grid, .projects-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen">
+<body>
 
-  <!-- Navigation -->
-  <header class="bg-white shadow-sm sticky top-0 z-50">
-    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold text-purple-600">Esteban Chaussinand</div>
-      <div class="hidden md:flex space-x-8">
-        <a href="#accueil" class="nav-link">Accueil</a>
-        <a href="#apropos" class="nav-link">À Propos</a>
-        <a href="#competences" class="nav-link">Compétences</a>
-        <a href="#certifications" class="nav-link">Certifications</a>
-        <a href="#projets" class="nav-link">Projets</a>
-        <a href="#contact" class="nav-link">Contact</a>
+  <nav>
+    <a class="nav-logo" href="#accueil">EC<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="accueil">
+    <div class="hero-content fade-in">
+      <div class="hero-status">Disponible — alternance / stage</div>
+      <h1>Esteban<br><span class="accent">Chaussinand</span></h1>
+      <p class="hero-desc">Développeur Web · BTS SIO SLAM 2ème année<br>Lycée Simone Weil, Saint-Priest-en-Jarez</p>
+      <div class="hero-btns">
+        <a class="btn-yellow" href="#projets">Voir mes projets</a>
+        <a class="btn-ghost" href="#contact">Me contacter</a>
       </div>
-      <button id="menuBtn" class="md:hidden text-gray-900">
-        <i class="fas fa-bars text-xl"></i>
-      </button>
-    </nav>
-
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200">
-      <a href="#accueil" class="mobile-link">Accueil</a>
-      <a href="#apropos" class="mobile-link">À Propos</a>
-      <a href="#competences" class="mobile-link">Compétences</a>
-      <a href="#certifications" class="mobile-link">Certifications</a>
-      <a href="#projets" class="mobile-link">Projets</a>
-      <a href="#contact" class="mobile-link">Contact</a>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section id="accueil" class="gradient-bg text-white py-20 text-center">
-    <h1 class="text-5xl font-bold mb-4">Esteban Chaussinand</h1>
-    <p class="text-xl opacity-90 mb-2">Étudiant en 2ème année BTS SIO SLAM</p>
-    <p class="text-lg opacity-80 mb-6">Lycée Simone Weil - Saint-Priest-en-Jarez</p>
-    <p class="text-xl opacity-90 mb-8">Fasciné par la conception d'interfaces web et l'art de structurer des sites performants</p>
-    <div class="space-x-4">
-      <a href="#projets" class="btn-primary">Voir mes projets</a>
-      <a href="#contact" class="btn-outline">Me contacter</a>
-    </div>
+    <div class="scroll-line">SCROLL</div>
   </section>
 
-  <!-- À propos -->
-  <section id="apropos" class="py-20 bg-white">
-    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-lg w-full h-96 flex items-center justify-center text-white text-6xl">
-        <i class="fas fa-user-circle"></i>
-      </div>
-      <div>
-        <h2 class="section-title">À Propos de Moi</h2>
-        <p class="mb-4 text-lg">Actuellement en 2ème année de BTS SIO option SLAM au Lycée Simone Weil à Saint-Priest-en-Jarez, je me spécialise dans le développement web et la création d'applications.</p>
-        <p class="mb-6 text-lg">Passionné par la structure et l'architecture des sites web, j'aime concevoir des solutions élégantes et performantes qui offrent une expérience utilisateur optimale.</p>
-        <ul class="space-y-3">
-          <li class="flex items-center"><i class="fas fa-graduation-cap text-purple-600 mr-3 text-xl"></i><span class="text-lg">BTS SIO SLAM - 2ème année</span></li>
-          <li class="flex items-center"><i class="fas fa-school text-purple-600 mr-3 text-xl"></i><span class="text-lg">Lycée Simone Weil, Saint-Priest-en-Jarez</span></li>
-          <li class="flex items-center"><i class="fas fa-map-marker-alt text-purple-600 mr-3 text-xl"></i><span class="text-lg">La Fouillouse, Loire, France</span></li>
-          <li class="flex items-center"><i class="fas fa-code text-purple-600 mr-3 text-xl"></i><span class="text-lg">Développeur Web</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Compétences -->
-  <section id="competences" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="section-title">Mes Compétences</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-        <div class="card">
-          <i class="fas fa-code text-purple-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-3">Développement Web</h3>
-          <p class="text-gray-600">HTML5, CSS3, JavaScript, React, Vue.js</p>
+  <section id="apropos">
+    <div class="fade-in">
+      <p class="eyebrow">01 — À propos</p>
+      <h2>Qui suis-je ?</h2>
+      <p class="sub">Développeur web passionné par la conception d'interfaces propres et performantes.</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Actuellement en 2ème année de BTS SIO option SLAM au Lycée Simone Weil, je me spécialise dans le développement web et la création d'applications.</p>
+          <p>Passionné par la structure et l'architecture des sites, j'aime concevoir des solutions élégantes et performantes qui offrent une expérience utilisateur optimale.</p>
+          <p>Mon approche combine rigueur technique et sens du détail pour produire du code propre, maintenable et scalable.</p>
         </div>
-        <div class="card">
-          <i class="fas fa-server text-purple-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-3">Backend & BDD</h3>
-          <p class="text-gray-600">PHP, Symfony, MySQL, MongoDB, API REST</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-tools text-purple-600 text-4xl mb-4"></i>
-          <h3 class="text-xl font-semibold mb-3">Outils & Méthodes</h3>
-          <p class="text-gray-600">Git, Docker, Méthodes Agiles, CI/CD</p>
+        <div class="info-stack">
+          <div class="info-row"><div class="info-icon">🎓</div><div><div class="info-label">Formation</div><div class="info-value">BTS SIO SLAM — 2ème année</div></div></div>
+          <div class="info-row"><div class="info-icon">🏫</div><div><div class="info-label">École</div><div class="info-value">Lycée Simone Weil, St-Priest-en-Jarez</div></div></div>
+          <div class="info-row"><div class="info-icon">📍</div><div><div class="info-label">Localisation</div><div class="info-value">La Fouillouse, Loire, France</div></div></div>
+          <div class="info-row"><div class="info-icon">💻</div><div><div class="info-label">Poste visé</div><div class="info-value">Développeur Web Full Stack</div></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section id="certifications" class="py-20 bg-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="section-title">Mes Certifications</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-        
-        <!-- GitHub -->
-        <div class="card">
-          <i class="fab fa-github text-purple-600 text-5xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-3">GitHub Foundations</h3>
-          <p class="text-gray-600 mb-4">Maîtrise des fondamentaux Git et GitHub</p>
-          <span class="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold">Certifié</span>
+  <section id="competences">
+    <div class="fade-in">
+      <p class="eyebrow">02 — Compétences</p>
+      <h2>Stack technique</h2>
+      <p class="sub">Les technologies avec lesquelles je travaille au quotidien.</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-num">01</div>
+          <div class="skill-title">Frontend</div>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span><span class="skill-tag">React</span><span class="skill-tag">Vue.js</span>
+          </div>
         </div>
-
-        <!-- freeCodeCamp -->
-        <div class="card">
-          <i class="fab fa-free-code-camp text-purple-600 text-5xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-3">freeCodeCamp</h3>
-          <p class="text-gray-600 mb-4">Responsive Web Design & JavaScript Algorithms</p>
-          <span class="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold">Certifié</span>
+        <div class="skill-card">
+          <div class="skill-num">02</div>
+          <div class="skill-title">Backend & BDD</div>
+          <div class="skill-tags">
+            <span class="skill-tag">PHP</span><span class="skill-tag">Symfony</span>
+            <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">API REST</span>
+          </div>
         </div>
-
-        <!-- OpenClassroom -->
-        <div class="card">
-          <i class="fas fa-graduation-cap text-purple-600 text-5xl mb-4"></i>
-          <h3 class="text-xl font-bold mb-3">OpenClassroom</h3>
-          <p class="text-gray-600 mb-4">Développement Web et Programmation Orientée Objet</p>
-          <span class="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold">Certifié</span>
+        <div class="skill-card">
+          <div class="skill-num">03</div>
+          <div class="skill-title">Outils & Méthodes</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span><span class="skill-tag">Docker</span>
+            <span class="skill-tag">Figma</span><span class="skill-tag">Agile</span><span class="skill-tag">CI/CD</span>
+          </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Projets -->
-  <section id="projets" class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="section-title">Mes Projets</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-        <!-- Projet 1 -->
+  <section id="certifications">
+    <div class="fade-in">
+      <p class="eyebrow">03 — Certifications</p>
+      <h2>Reconnaissances</h2>
+      <p class="sub">Formations et certifications qui valident mes compétences.</p>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-badge">✓ Certifié</div>
+          <div class="cert-name">GitHub Foundations</div>
+          <div class="cert-desc">Maîtrise des fondamentaux Git et GitHub — versioning, branches, pull requests et collaboration.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">✓ Certifié</div>
+          <div class="cert-name">freeCodeCamp</div>
+          <div class="cert-desc">Responsive Web Design & JavaScript Algorithms — sites responsives et algorithmes fondamentaux.</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-badge">✓ Certifié</div>
+          <div class="cert-name">OpenClassroom</div>
+          <div class="cert-desc">Développement Web et Programmation Orientée Objet — HTML, CSS, JavaScript, PHP et POO.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projets">
+    <div class="fade-in">
+      <p class="eyebrow">04 — Projets</p>
+      <h2>Mes réalisations</h2>
+      <p class="sub">Projets concrets qui illustrent mon approche et mes compétences.</p>
+      <div class="projects-grid">
         <div class="project-card">
-          <div class="bg-gradient-to-br from-blue-400 to-blue-600 h-48 flex items-center justify-center text-white text-5xl">
-            <i class="fas fa-laptop-code"></i>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mt-2">Site de Emoji code mood</h3>
-            <p class="text-gray-600 mt-2">Développé en html et js</p>
-            <div class="mt-4 flex justify-center space-x-4">
-              <a href="https://blycke.github.io/emoji-code/" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fas fa-external-link-alt"></i> Demo</a>
-            </div>
+          <div class="project-thumb thumb-1"><span class="thumb-emoji">😄</span></div>
+          <div class="project-body">
+            <div class="project-techs"><span class="project-tech">HTML</span><span class="project-tech">JavaScript</span></div>
+            <div class="project-title">Emoji Code Mood</div>
+            <div class="project-desc">Application web interactive pour exprimer et coder des humeurs via des emojis. Interface légère et dynamique en HTML/JS vanilla.</div>
+            <a class="project-link" href="https://blycke.github.io/emoji-code/" target="_blank">Voir la démo →</a>
           </div>
         </div>
-        
-        <!-- Projet 2 -->
         <div class="project-card">
-          <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 flex items-center justify-center text-white text-5xl">
-            <i class="fas fa-database"></i>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mt-2">Système de Base de Données</h3>
-            <p class="text-gray-600 mt-2">MySQL et PHP avec interface admin</p>
-            <div class="mt-4 flex justify-center space-x-4">
-              <a href="https://github.com/Blycke/template_citations" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fas fa-external-link-alt"></i> Demo</a>
-            </div>
+          <div class="project-thumb thumb-2"><span class="thumb-emoji">🗄️</span></div>
+          <div class="project-body">
+            <div class="project-techs"><span class="project-tech">PHP</span><span class="project-tech">MySQL</span></div>
+            <div class="project-title">Système de Base de Données</div>
+            <div class="project-desc">Application de gestion avec interface admin. Modèle relationnel MySQL, CRUD complet en PHP et gestion des citations.</div>
+            <a class="project-link" href="https://github.com/Blycke/template_citations" target="_blank">Voir sur GitHub →</a>
           </div>
         </div>
-        
-        <!-- Projet 3 -->
         <div class="project-card">
-          <div class="bg-gradient-to-br from-purple-400 to-purple-600 h-48 flex items-center justify-center text-white text-5xl">
-            <i class="fas fa-mobile-alt"></i>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold mt-2">Site figma GEstion de ticket</h3>
-            <p class="text-gray-600 mt-2">Design simple avec figma</p>
-            <div class="mt-4 flex justify-center space-x-4">
-              <a href="https://www.figma.com/make/YGqVTnJ6R1uMyxmnrKUv0h/Interactive-Ticket-Dashboard-Prototype?node-id=0-1&p=f" class="text-purple-600 hover:text-purple-800 font-semibold"><i class="fas fa-external-link-alt"></i> Demo</a>
-            </div>
+          <div class="project-thumb thumb-3"><span class="thumb-emoji">🎫</span></div>
+          <div class="project-body">
+            <div class="project-techs"><span class="project-tech">Figma</span><span class="project-tech">UI/UX</span></div>
+            <div class="project-title">Dashboard Gestion de Tickets</div>
+            <div class="project-desc">Prototype interactif d'un dashboard de tickets sur Figma. Design épuré, flux utilisateur complet et composants réutilisables.</div>
+            <a class="project-link" href="https://www.figma.com/make/YGqVTnJ6R1uMyxmnrKUv0h/" target="_blank">Voir sur Figma →</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="py-20 bg-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="section-title">Contactez-moi</h2>
-      <p class="text-lg text-gray-600 mb-10">N'hésitez pas à me contacter pour toute question ou opportunité</p>
-      
-      <div class="max-w-2xl mx-auto mb-10">
-        <div class="flex justify-center space-x-8 text-2xl">
-          <a href="mailto:avallocenzo@gmail.com" class="text-purple-600 hover:text-purple-800 transition"><i class="fas fa-envelope"></i></a>
-          <a href="#" class="text-purple-600 hover:text-purple-800 transition"><i class="fab fa-github"></i></a>
-          <a href="#" class="text-purple-600 hover:text-purple-800 transition"><i class="fab fa-linkedin"></i></a>
+  <section id="contact">
+    <div class="fade-in">
+      <div class="contact-wrap">
+        <div class="contact-left">
+          <p class="eyebrow">05 — Contact</p>
+          <h2>Travaillons ensemble</h2>
+          <p>Disponible pour une alternance, un stage ou tout projet web. N'hésite pas à me contacter pour discuter de ta prochaine idée.</p>
+          <a class="contact-email" href="mailto:avallocenzo@gmail.com">avallocenzo@gmail.com ↗</a>
         </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <input type="text" placeholder="Votre nom" required />
+          <input type="email" placeholder="Votre email" required />
+          <textarea rows="5" placeholder="Votre message…" required></textarea>
+          <button type="submit">Envoyer le message</button>
+        </form>
       </div>
-      
-      <form class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg" id="contactForm">
-        <input type="text" placeholder="Votre nom" class="form-input" required />
-        <input type="email" placeholder="Votre email" class="form-input" required />
-        <textarea placeholder="Votre message" class="form-input h-32" required></textarea>
-        <button type="submit" class="btn-primary w-full mt-4">Envoyer</button>
-      </form>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-6 text-center">
-    <p>&copy; 2025 Esteban Chaussinand - Tous droits réservés</p>
-    <p class="text-sm text-gray-400 mt-2">avallocenzo@gmail.com</p>
+  <footer>
+    <p>© 2025 Esteban Chaussinand</p>
+    <div class="footer-links">
+      <a href="https://github.com/Blycke" target="_blank">GitHub</a>
+      <a href="mailto:avallocenzo@gmail.com">Email</a>
+    </div>
   </footer>
 
   <script>
-    // Menu mobile
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    
-    // Fermer le menu mobile lors du clic sur un lien
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-    
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-    
-    // Formulaire de contact
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', (e) => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    function handleSubmit(e) {
       e.preventDefault();
-      alert('Message envoyé ! Je vous répondrai rapidement.');
-      contactForm.reset();
-    });
+      const btn = e.target.querySelector('button');
+      btn.textContent = '✓ Envoyé !';
+      setTimeout(() => btn.textContent = 'Envoyer le message', 3000);
+    }
   </script>
 </body>
 </html>
