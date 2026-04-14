@@ -75,10 +75,6 @@ Je suis **Esteban Chaussinand**, développeur web en **2ème année de BTS SIO o
 | **Emoji Code Mood**              | HTML, JavaScript    | Application interactive pour coder des humeurs via des emojis. Interface légère et dynamique. | [Voir la démo](#) |
 | **Projet Laravel**               | Laravel, PHP, MySQL | Application web avec architecture MVC, gestion des routes et interface d’administration.      | [GitHub](#)       |
 | **Dashboard Gestion de Tickets** | Figma               | Prototype interactif d’un dashboard de tickets. Design épuré et flux utilisateur complet.     | [Figma](#)        |
-
-
-*(Remplace les `#` par les liens réels vers tes projets.)*
-
 ---
 
 ## 📩 Contact
@@ -92,26 +88,3 @@ Je suis **Esteban Chaussinand**, développeur web en **2ème année de BTS SIO o
 ---
 
 © 2026 Esteban Chaussinand  
-</canvaentity
-
-
-
----
-
-### Pourquoi cette version ?
-
-1. **100% personnalisée** : Reprend **ton nom, ta formation, tes projets, tes certifications**.
-2. **Clarté et professionnalisme** : Structure adaptée aux attentes des recruteurs.
-3. **Mise en avant de tes atouts** : Alternance/stage, compétences techniques, projets concrets.
-
----
-
-### Prochaines étapes (si tu veux) :
-
-1. **Ajouter des liens** vers tes projets (GitHub, Figma, démo).
-2. **Optimiser les visuels** : Captures d’écran de tes projets dans le README.
-3. **Traduire en anglais** : Pour toucher une audience internationale.
-
----
-
-**Question** : Veux-tu que j’ajoute ou modifie quelque chose pour coller encore plus à ta personnalité ou à tes objectifs ? 😊
